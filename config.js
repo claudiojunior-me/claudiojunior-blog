@@ -2,12 +2,12 @@
 
 module.exports = {
   url: 'https://claudiojunior.me',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-  copyright: '© All rights reserved.',
+  title: 'Blog by Claudio Junior',
+  subtitle: 'Front End Developer',
+  copyright: '© Todos os direitos reservados.',
   disqusShortname: '',
-  postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  postsPerPage: 6,
+  googleAnalyticsId: 'UA-127225366-1',
   menu: [
     {
       label: 'Posts',
@@ -15,7 +15,7 @@ module.exports = {
     },
     {
       label: 'Sobre Mim',
-      path: '/pages/about'
+      path: '/sobre-mim'
     },
     {
       label: 'Contato',
@@ -25,7 +25,7 @@ module.exports = {
   author: {
     name: 'Claudio V. Junior',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'Front End Developer',
     contacts: {
       email: 'claudio.1091@gmail.com',
       twitter: 'https://twitter.com/ClaudioVsJunior',
