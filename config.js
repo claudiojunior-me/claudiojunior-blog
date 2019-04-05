@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://claudiojunior.me',
   title: 'Blog by John Doe',
   subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
   copyright: '© All rights reserved.',
@@ -23,16 +23,13 @@ module.exports = {
     }
   ],
   author: {
-    name: 'Claudio Junior',
+    name: 'Claudio V. Junior',
     photo: '/photo.jpg',
     bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
     contacts: {
       email: 'claudio.1091@gmail.com',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
-      rss: '#',
-      vkontakte: '#'
+      twitter: 'https://twitter.com/ClaudioVsJunior',
+      github: 'https://github.com/claudio1091',
     }
   }
 };
