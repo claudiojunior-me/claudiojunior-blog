@@ -29,7 +29,7 @@ module.exports = {
     contacts: {
       email: 'claudio.1091@gmail.com',
       twitter: 'ClaudioVsJunior',
-      github: 'claudio1091'
+      github: 'claudiojunior-me'
     }
   }
 };
