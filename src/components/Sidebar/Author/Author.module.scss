@@ -31,4 +31,9 @@
 		}
 	}
 
-  }
+	&__subtitle {
+		color: $color-white;
+		@include line-height(0.8);
+		@include margin(0, 0, 1, 0);
+	}
+}
