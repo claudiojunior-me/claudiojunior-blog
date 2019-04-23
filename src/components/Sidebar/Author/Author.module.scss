@@ -2,35 +2,38 @@
 @import '../../../assets/scss/mixins';
 
 .author {
-  &__photo {
-    display: inline-block;
-    margin-bottom: 0;
-    border-radius: 50%;
-    background-clip: padding-box
-  }
+	background-color: #04609a;
+	background-image: linear-gradient(to bottom, #2291ca, $color-primary);
+	margin-top: 1.25rem;
+	border-radius: 0.625rem;
+	padding: 25px 0 5px;
 
-  &__title {
-    font-size: $typographic-base-font-size * 1.125;
-    font-weight: 600;
-    @include line-height(1.125);
-    @include margin(.5, 0, .5, 0);
+	&__photo {
+		display: inline-block;
+		margin-bottom: 0;
+		border-radius: 50%;
+		background-clip: padding-box;
+	}
 
-    &-link {
-      color: $color-base;
+	&__title {
+		font-size: $typographic-base-font-size * 1.125;
+		font-weight: 600;
+		@include line-height(1.125);
+		@include margin(0.5, 0, 0, 0);
 
-      &:hover,
-      &:focus {
-        color: $color-base
-      }
+		&-link {
+			color: $color-white;
 
-    }
+			&:hover,
+			&:focus {
+				color: $color-base;
+			}
+		}
+	}
 
-  }
-
-  &__subtitle {
-    color: $color-gray;
-    @include line-height(1);
-    @include margin-bottom(1)
-  }
-
+	&__subtitle {
+		color: $color-white;
+		@include line-height(0.8);
+		@include margin(0, 0, 1, 0);
+	}
 }
