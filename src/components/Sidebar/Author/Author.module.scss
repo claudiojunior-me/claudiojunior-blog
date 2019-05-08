@@ -2,10 +2,7 @@
 @import '../../../assets/scss/mixins';
 
 .author {
-	background-color: #04609a;
-	background-image: linear-gradient(to bottom, #2291ca, $color-primary);
 	margin-top: 1.25rem;
-	border-radius: 0.625rem;
 	padding: 25px 0 5px;
 
 	&__photo {
