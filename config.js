@@ -16,10 +16,6 @@ module.exports = {
     {
       label: 'Sobre Mim',
       path: '/pages/sobre-mim'
-    },
-    {
-      label: 'Contato',
-      path: '/pages/contacts'
     }
   ],
   author: {
@@ -29,7 +25,8 @@ module.exports = {
     contacts: {
       email: 'claudio.1091@gmail.com',
       twitter: 'ClaudioVsJunior',
-      github: 'claudiojunior-me'
+      github: 'claudiojunior-me',
+      instagram: 'claudiojunior.me'
     }
   }
 };
