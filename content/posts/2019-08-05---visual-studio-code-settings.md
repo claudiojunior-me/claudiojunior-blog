@@ -1,6 +1,6 @@
 ---
 title: Meu VS Code
-date: '2019-08-07T18:40:32.169Z'
+date: '2019-08-10T23:00:32.169Z'
 template: 'post'
 draft: false
 slug: '/posts/minha-configuracao-vscode/'
@@ -8,8 +8,10 @@ category: 'VS Code'
 tags:
   - 'VS Code'
   - 'Editor'
-description: 'Aprenda a configurar Visual Studio Code como editor padrão do git.'
+description: 'Algumas configurações e extensões que eu considero essenciais sempre que eu vou utilizar o VS Code'
 ---
+
+<img src="/media/posts/vs_code/cover.jpg" width="100%" height="250" style="object-fit: cover;" />
 
 O Visual Studio Code é meu principal editor de código, uso ele para escrever meus projetos Javascript,
 para estudar Python, para editar arquivos de configurações, mockar arquivos JSON. Basicamente para tudo que envolve
@@ -21,7 +23,7 @@ minhas necessidades, é um tempo bem investido.
 Portanto, como já fiz esse investimento, vou compartilhar minhas configurações
 que eu considero ideais pras minhas necessidades.
 
-# Configurações Globais
+## Configurações Globais
 
 Para começar, eu utilizo a fonte [Fira Code](https://github.com/tonsky/FiraCode), considero ela de boa legibilidade, além de ser possível o uso das
 _fonts ligatures_, o que, em alguns caso, deixa o código mais agradável ao olhos:
@@ -101,9 +103,11 @@ acaba deixando deixando as busca dentro de todo projeto mais rápidas:
 }
 ```
 
-# Extensões que considero essenciais
+## Extensões que considero essenciais
 
-- ## Prettier
+- ### [Prettier](https://github.com/prettier/prettier-vscode)
+
+![Prettier](https://raw.githubusercontent.com/prettier/prettier-logo/master/images/prettier-banner-light.png)
 
 O _Prettier_ é uma importante extensão para formatação e padronização
 de códigos.
@@ -130,6 +134,8 @@ acho ideal deixar algo próximo de:
 }
 ```
 
+- ### [Code Spell Checker](https://github.com/streetsidesoftware/vscode-spell-checker)
+
 Uma outra extensão, que considero de grande ajuda, principalmente para escrever
 frases ou textos, é a _Code Spell Checker_, que nada mais é que um corretor
 ortográfico direto no seu **VS Code**.
@@ -143,3 +149,31 @@ ortográfico direto no seu **VS Code**.
   "cSpell.language": "en,pt,pt_BR"
 }
 ```
+
+- ### [Bookmarks](https://github.com/alefragnani/vscode-bookmarks)
+
+![Bookmarks](https://github.com/alefragnani/vscode-bookmarks/raw/master/images/bookmarks-toggle-labeled.gif)
+
+Essa extensão nos permite marcar diferentes linhas em diferentes arquivos em um mesmo projeto, além de disponibilizar, via uma nova opção na _activity bar_, uma forma extremamente fácil de navegar entre os diversos bookmarks criados.
+
+É uma excêlente opção quando você precisar navegar entre pontos importantes no código da aplicação.
+
+- ### [ident-rainbow](https://github.com/oderwat/vscode-indent-rainbow)
+
+![ident-rainbow](https://raw.githubusercontent.com/oderwat/vscode-indent-rainbow/master/assets/example.png)
+
+Apenas uma extensão para ajudar aqueles que já ficaram perdidos em meios aos mares de chaves, colchetes e parenteses, o _ident-rainbow_ lhe auxilia adicionando cores nas identações dos arquivos.
+
+- ### [GitLens](https://gitlens.amod.io/)
+
+![GitLens](https://raw.githubusercontent.com/eamodio/vscode-gitlens/master/images/docs/gitlens-logo.png)
+
+O _GitLens_ é uma ferramente que da super poderes ao versionador Git já embutido no VS Code.
+
+Ele torna mais fácil navegar pelo histórico do arquivo, mostra quando foi a ultima alteração realizada na linha que está em foco, além de outros auxílios muito bem vindos relacionados há versionamento de código.
+
+- ### [Dracula Official Theme](https://draculatheme.com/visual-studio-code/)
+
+![Dracula](https://camo.githubusercontent.com/0fabc6ce63d1f7b6870311e1d096d07c11f27d63/68747470733a2f2f64726163756c617468656d652e636f6d2f6173736574732f696d672f64726163756c612e676966)
+
+Esse é um dos temas que achei mais agradáveis para se trabalhar no dia a dia. Ele traz o conceito de dark theme bem sutil, e ainda deixa todos os itens da interface nativa do VS Code muito bem visíveis, coisa que não acontece com alguns outros temas dark.
