@@ -33,6 +33,10 @@ pre[class*='language-'] {
   hyphens: none;
 }
 
+pre[class*='language-'] {
+  font-size: 0.9rem;
+}
+
 /* Code blocks */
 pre[class*='language-'] {
   padding: 1em;
