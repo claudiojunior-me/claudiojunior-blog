@@ -18,61 +18,108 @@ uma grande mão na roda quando estamos usando essa maravilha de editor.
 
 Saca só alguns atalhos que com certeza vão fazer parte do seu ciclo diário:
 
--   `CTRL`+`K` `CTRL`+`0` ou `CTRL`+`K` `CTRL`+`J`: _Dobrar_ ou _desdobrar_ todas as funções ou métodos
-    ![test](/media/posts/atalhos-vs-code/fold-unfold-all.gif)
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>CTRL</kbd>+<kbd>0</kbd> ou <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>CTRL</kbd>+<kbd>J</kbd>:
+    _Dobrar_ ou _desdobrar_ todas as funções ou métodos
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/fold-unfold-all.gif'>
 
--   `CTRL`+`G`: Ir para a linha
--   `CTRL`+`P`: Ir para o arquivo
--   `F8`: Ir para o próximo _error_ ou _warning_
--   `F12`: Ir para a definição da função ou método
-    ![test](/media/posts/atalhos-vs-code/goto-definitions.gif)
+-   <kbd>CTRL</kbd>+<kbd>G</kbd>: Ir para a linha
 
--   `ALT`+`F12`: Mostrar a definição da função ou método
-    ![test](/media/posts/atalhos-vs-code/open-definitions.gif)
+-   <kbd>CTRL</kbd>+<kbd>P</kbd>: Ir para o arquivo
 
--   `CTRL`+`ALT`+`UP` ou `CTRL`+`ALT`+`DOWN`: Adicionar um cursor acima ou abaixo da linha atual
--   `SHIFT`+`ALT`+`I`: Inserir um cursor no final de cada linha selecionada
--   `CTRL`+`F2`: Selecionar todas as ocorrências da seleção
--   `CTRL`+`SHIFT`+`.`: Ir para a navegação via _breadcrumbs_
+-   <kbd>F8</kbd>: Ir para o próximo _error_ ou _warning_
 
--   `CTRL`+`ALT`+`LEFT` ou `CTRL`+`ALT`+`RIGHT`: Mover o editor em grupos
--   `SHIFT`+`ALT`+`0`: Alternar o layout dos grupos em vertical e horizontal
-    ![test](/media/posts/atalhos-vs-code/workspace-groups.gif)
+-   <kbd>F12</kbd>: Ir para a definição da função ou método
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/goto-definitions.gif'>
 
--   `ALT`+`Z`: Alternar entre quebra de linha
-    ![test](/media/posts/atalhos-vs-code/word-wrap.gif)
+-   <kbd>ALT</kbd>+<kbd>F12</kbd>: Mostrar a definição da função ou método
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/open-definitions.gif'>
 
--   `CTRL`+`K` `M`: Alterar a linguagem do arquivo
-    ![test](/media/posts/atalhos-vs-code/file-language.gif)
+-   <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>UP</kbd> ou <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>DOWN</kbd>:
+    Adicionar um cursor acima ou abaixo da linha atual
 
--   `CTRL`+`B`: Mostrar/esconder a barra lateral
-    ![test](/media/posts/atalhos-vs-code/toggle-sidebar.gif)
+-   <kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>I</kbd>:
+    Inserir um cursor no final de cada linha selecionada
 
--   `SHIFT`+`ALT`+`UP` ou `SHIFT`+`ALT`+`DOWN`: Copiar a linha pra cima ou pra baixo
--   `CTRL`+`SHIFT`+`K`: Apagar linha selecionada
--   `F2`: Renomear simbolo ou variável
-    ![test](/media/posts/atalhos-vs-code/rename-variable.gif)
+-   <kbd>CTRL</kbd>+<kbd>F2</kbd>:
+    Selecionar todas as ocorrências da seleção
 
--   `CTRL`+`K` `C`: Comparar arquivo atual com a area de transferência
-    ![test](/media/posts/atalhos-vs-code/file-compare-clipboard.gif)
+-   <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>.</kbd>:
+    Ir para a navegação via _breadcrumbs_
 
--   `CTRL`+`SHIFT`+`5`: Dividir terminal
+-   <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>LEFT</kbd> ou <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>RIGHT</kbd>:
+    Mover o editor em grupos
 
--   `CTRL`+`K` `CTRL`+`S`: Mostrar atalhos
--   `CTRL`+`TAB`: Alternar entre abas
--   `CTRL`+`L`: Selecionar toda linha
--   `CTRL`+`SHIFT`+`L`: Selecionar todas as ocorrências da seleção
--   `CTRL`+`F2`: Selecionar todas as ocorrências da palavra
--   `CTRL`+`SHIFT`+`SPACE`: Mostrar definição dos parâmetros
-    ![test](/media/posts/atalhos-vs-code/parameter-definitions.gif)
--   `CTRL`+`K` `CTRL`+`X`: Apagar espaços em branco
--   `CTRL`+`SHIFT`+`H`: Substituir em todos arquivos
+-   <kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>0</kbd>:
+    Alternar o layout dos grupos em vertical e horizontal
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/workspace-groups.gif'>
 
--   `SHIFT`+`ALT`+`F`: Formatar todo o documento
--   `CTRL`+`K` `CTRL`+`F`: Formatar seleção
+-   <kbd>ALT</kbd>+<kbd>Z</kbd>:
+    Alternar entre quebra de linha
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/word-wrap.gif'>
 
--   `CTRL`+`K` `V`: Abrir _preview_ ao lado (ex. Markdown)
--   `CTRL`+`,`: Abrir configurações do usuário
--   `CTRL`+`K` `Z`: Entrar no modo _Zen_
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>M</kbd>:
+    Alterar a linguagem do arquivo
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/file-language.gif'>
+
+-   <kbd>CTRL</kbd>+<kbd>B</kbd>:
+    Mostrar/esconder a barra lateral
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/toggle-sidebar.gif'>
+
+-   <kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>UP</kbd> ou <kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>DOWN</kbd>:
+    Copiar a linha pra cima ou pra baixo
+
+-   <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>K</kbd>:
+    Apagar linha selecionada
+
+-   <kbd>F2</kbd>:
+    Renomear simbolo ou variável
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/rename-variable.gif'>
+
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>C</kbd>:
+    Comparar arquivo atual com a area de transferência
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/file-compare-clipboard.gif'>
+
+-   <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>5</kbd>:
+    Dividir terminal
+
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>CTRL</kbd>+<kbd>S</kbd>:
+    Mostrar atalhos
+
+-   <kbd>CTRL</kbd>+<kbd>TAB</kbd>:
+    Alternar entre abas
+
+-   <kbd>CTRL</kbd>+<kbd>L</kbd>:
+    Selecionar toda linha
+
+-   <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>L</kbd>:
+    Selecionar todas as ocorrências da seleção
+
+-   <kbd>CTRL</kbd>+<kbd>F2</kbd>:
+    Selecionar todas as ocorrências da palavra
+
+-   <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>SPACE</kbd>:
+    Mostrar definição dos parâmetros
+    <img style='margin: 15px 0;' src='/media/posts/atalhos-vs-code/parameter-definitions.gif'>
+
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>CTRL</kbd>+<kbd>X</kbd>:
+    Apagar espaços em branco
+
+-   <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>H</kbd>:
+    Substituir em todos arquivos
+
+-   <kbd>SHIFT</kbd>+<kbd>ALT</kbd>+<kbd>F</kbd>:
+    Formatar todo o documento
+
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>CTRL</kbd>+<kbd>F</kbd>:
+    Formatar seleção
+
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>V</kbd>:
+    Abrir _preview_ ao lado (ex. Markdown)
+
+-   <kbd>CTRL</kbd>+<kbd>,</kbd>:
+    Abrir configurações do usuário
+
+-   <kbd>CTRL</kbd>+<kbd>K</kbd> <kbd>Z</kbd>:
+    Entrar no modo _Zen_
 
 😎
