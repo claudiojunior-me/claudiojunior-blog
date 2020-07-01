@@ -1,0 +1,49 @@
+---
+title: Expo (ou React Native) + WSL
+date: '2020-07-01T10:00:50.169Z'
+template: 'post'
+draft: false
+slug: '/posts/expo-wsl'
+category: 'dicas'
+tags:
+    - 'expo'
+    - 'react native'
+    - 'android'
+    - 'adb'
+description: 'Já ouviu falar em ADB via WiFi? Uma maneira simples de juntar os mundos de Windows + WSL + Expo (ou React Native).'
+---
+
+Dado alguns pontos bem relevantes pra mim - duração de bateria, alcance e configurações de bluetooth, equalização de som - pessoalmente continuo utilizando um notebook com Windows, porém, o ambiente linux, por conta do shell, comandos mais fácil de serem pesquisados dentre outras coisas, é um ambiente que auxilia quando se fala em programação. Por isso o combo Windows + WSL 2 + Ubuntu, ao menos pra mim, junta o melhor dos dois mundo em um cenário quase que perfeito 😅.
+
+Mas, pelo menos até a época em que pesquisei e como nem tudo é perfeito, um porém que encontrei para meus estudos e projetos pessoais é a falta de capacidade do WSL comunicar diretamente com o USB do host, no caso o Windows.
+
+Pra mim isso é necessário em apenas uma ocasião, quando quero executar uma aplicação Expo (ou react-native) diretamente no dispositivo real, já que além de não possui uma máquina capaz de executar o emulador do Android + cliente do Expo + as 500 abas do Chrome que sempre deixo abertas porque sempre acredito que vou precisar depois, executar o app em um device real acredito que tenha uma diferença tanto de performance quanto de _feeling_, já que você está usando realmente um dedo para navegar, e não o mouse, que tem uma capacidade muito maior de precisão além de que não foi pensando para se executar ações como _double tap_ ou _pinch gesture_.
+
+<img src="https://images.unsplash.com/photo-1542641532-6a4c78e5f701?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" />
+
+Dado todo o contexto, como pude reverter isso?
+Utilizando algo bem simples no final, **ABD via WiFi**. Como se faz isso?
+
+Considerando que possuímos o ADB (**A**ndroid **D**ebug **B**ridge) instalado nas duas máquinas - host Windows e na distro WSL - primeiramente, usando a conexão via USB, precisamos habilitar essa funcionalidade no host usando:
+
+```bash
+adb devices # apenas para garantir que o device foi realmente reconhecido pelo adb
+adb tcpip 5555 # configura o device para detectar uma conexão TCP/IP na porta 5555
+```
+
+Após isso, o device já está preparado para receber uma conexão via WiFi na porta 5555 como foi configurada.
+Portanto, basta irmos a nossa distro WSL e conectarmos ao device:
+
+```bash
+adb connect ip_local_do_device:5555
+```
+
+E assim temos tudo pronto, se listarmos os devices conectados no adb do WSL veremos o nosso device físico listado.
+
+<img src="/media/posts/expo-wsl/example.png" />
+
+---
+
+Inclusive, a ferramenta ADB possui diversos outros comandos que podem ser de muita ajuda no decorrer do desenvolvimento, portanto cabe uma consulta ao guia Oficial disponibilizado pelo time do Android [aqui](https://developer.android.com/studio/command-line/adb?hl=pt-br).
+
+Espero que seja util, e até mais ver!
