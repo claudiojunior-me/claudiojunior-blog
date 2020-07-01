@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
@@ -6,7 +7,8 @@ import Post from '../components/Post';
 const PostTemplate = ({ data }) => {
   const {
     title: siteTitle,
-    subtitle: siteSubtitle
+    subtitle: siteSubtitle,
+    url: siteUrl
   } = data.site.siteMetadata;
 
   const {
@@ -14,10 +16,19 @@ const PostTemplate = ({ data }) => {
     description: postDescription
   } = data.markdownRemark.frontmatter;
 
+  const {
+    slug: postSlug
+  } = data.markdownRemark.fields;
+
   const metaDescription = postDescription !== null ? postDescription : siteSubtitle;
 
   return (
-    <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription}>
+    <Layout
+      title={`${postTitle} - ${siteTitle}`}
+      description={metaDescription}
+      siteUrl={siteUrl}
+      slug={postSlug}
+    >
       <Post post={data.markdownRemark} />
     </Layout>
   );

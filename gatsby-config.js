@@ -6,6 +6,7 @@ const postCssPlugins = require('./postcss-config.js');
 module.exports = {
   siteMetadata: {
     url: siteConfig.url,
+    siteUrl: siteConfig.url,
     title: siteConfig.title,
     subtitle: siteConfig.subtitle,
     copyright: siteConfig.copyright,
@@ -109,7 +110,25 @@ module.exports = {
           'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants'
+          'gatsby-remark-smartypants',
+          {
+            resolve: 'gatsby-remark-social-cards',
+            options: {
+              title: {
+                color: 'white'
+              },
+              meta: {
+                parts: [
+                  { field: 'description' },
+                  ' » ',
+                  { field: 'date', format: 'dd/mm/yyyy' }
+                ],
+                color: 'white',
+                y: 157
+              },
+              background: '#283040'
+            }
+          }
         ]
       }
     },
