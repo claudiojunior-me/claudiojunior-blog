@@ -10,14 +10,23 @@ const Layout = ({
         <html lang="pt-br" />
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:image"
-          content={`${siteUrl}${slug}/twitter-card.jpg`}
-        />
+
+        {/* Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}${slug}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`${siteUrl}${slug}/twitter-card.jpg`} />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`${siteUrl}${slug}`} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={`${siteUrl}${slug}/twitter-card.jpg`} />
       </Helmet>
       {children}
     </div>
-  );
+);
 
 export default Layout;
