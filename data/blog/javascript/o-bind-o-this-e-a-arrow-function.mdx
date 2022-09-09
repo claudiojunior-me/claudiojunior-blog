@@ -1,0 +1,132 @@
+---
+title: O bind, o this e a arrow function...
+date: '2018-11-20'
+tags: ['js','javascript']
+draft: false
+summary: Não é só uma forma bonita de escrever o código, acredite.
+images: []
+layout: PostLayout
+authors: ['default']
+---
+
+Se você passou por algum código de javascript nos ultimos tempos, seja em livros, artigos ou tutoriais, existe grandes chances
+de ja ter deparado ou com um _.bind(this)_ ou com uma _arrow function_. Se você não sabe a função deles, vamos lá.
+
+![Photo by Ben White on Unsplash](/static/images/boy-holding-a-book.jpg)
+
+## .bind()
+
+O método _bind_ está presente no javascript há bastante tempo (segundo o [can i use](https://caniuse.com/#search=bind),
+suportado desde o ECMAScript 5, até o IE9 tem suporte), ele tem como função principal , a grosso modo de dizer, "setar" o _this_
+da função que está sendo chamada, ou seja, ele é capaz de definir o contexto da função.
+Por exemplo:
+
+```javascript
+function showName() {
+  console.log(this.name);
+}
+
+let user1 = { name: 'João' };
+let user2 = { name: 'Paulo' };
+
+showName(); // undefined
+showName.bind(user1).call(); // João
+showName.bind(user2).call(); // Paulo
+```
+
+## Arrow Functions
+
+As _arrow functions_ surgiram no ES2015, com elas é possível passar o contexto automaticamente sem o uso do _.bind()_.
+
+```javascript
+let arr = [1, 2, 3, 4, 5];
+let arrDouble = arr.map((item) => item * 2);
+
+// console.log(newDouble);
+// [2, 4, 6, 8, 10]
+```
+
+## O caos do _this_
+
+Geralmente vemos o emprego do _.bind()_ para repassar o contexto _this_ do atual contexto.
+
+**Mas por que isso?**
+
+Simples, porque o contexto _this_ se "perde", principalmente, por meio de callbacks, pegando o exemplo:
+
+```javascript
+let person = {
+  firstName: 'João',
+  lastName: 'Silva',
+
+  fullName: function() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+
+  show: function() {
+    window.setTimeout(function() {
+      console.log(this.fullName());
+    }, 100);
+  },
+};
+
+person.show();
+```
+
+Note que ao tentar executar esse código, irá surgir um erro de execução:
+_**this.fullName is not a function**_
+
+Quando o callback da função _window.setTimeout_ precisar acessar o _this_, não será mais o mesmo contexto presente em _show_.
+Pra isso, podemos usar as duas formas para "resolver" esse detalhe:
+
+- Podemos repassar o contexto do _show_ para o callback de _window.setTimeout_ usando o _.bind()_:
+
+```javascript
+let person = {
+  firstName: 'João',
+  lastName: 'Silva',
+
+  fullName: function() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+
+  show: function() {
+    window.setTimeout(
+      function() {
+        console.log(this.fullName());
+      }.bind(this),
+      100,
+    );
+  },
+};
+
+person.show();
+```
+
+- Ou podemos utilizar da propriedade das _arrow functions_ de repassar o contexto, assim o contexto de _show_ é
+  repassado automaticamente:
+
+```javascript
+let person = {
+  firstName: 'João',
+  lastName: 'Silva',
+
+  fullName: function() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+
+  show: function() {
+    window.setTimeout(() => {
+      console.log(this.fullName());
+    }, 100);
+  },
+};
+
+person.show();
+```
+
+![Photo by Anurag Harishchandrakar on Unsplash](/static/images/ok-understand.jpg)
+
+---
+
+Vlw e até a próxima!!

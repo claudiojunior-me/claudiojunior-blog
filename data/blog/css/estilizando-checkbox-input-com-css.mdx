@@ -1,0 +1,64 @@
+---
+title: Estilizando checkbox input com CSS
+date: '2019-01-15'
+tags: ['css']
+draft: false
+summary: Porque não compensa usar uma biblioteca só pra isso.
+images: []
+layout: PostLayout
+authors: ['default']
+---
+
+
+As vezes queremos só estilizar um checkbox, por _n_ motivos, seja pra seguir protótipo, seja pra seguir um tema já definido, ou apenas sem motivo nenhum.
+
+Porém com as facilidades de bibliotecas de componentes, frameworks e afins, as vezes esquecemos que com um simples _::pseudo selector_ do CSS já é provável atingirmos nosso objetivo, e tudo isso sem carregar _200kb_ a mais de componentes que não utilizaríamos.
+
+![Photo by Andrej Lišakov on Unsplash](/static/images/checkbox-post-unsplash.jpg)
+
+Considerando o seguinte componente de checkbox:
+
+```html
+<label> <input type="checkbox" name="agree" /> I Agree </label>
+```
+
+Podemos adicinar o estilo a todos nossos checkbox so site da seguinte forma:
+
+```css
+input[type='checkbox']::before {
+  content: ' ';
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #bf360c;
+}
+input[type='checkbox']:checked::after {
+  content: ' ';
+  width: 0.2rem;
+  height: 0.5rem;
+  margin-left: 0.3rem;
+  border-color: #bf360c;
+  border-style: solid;
+  border-width: 0 3px 3px 0;
+  position: absolute;
+  transform: rotate(45deg);
+}
+```
+
+###O que aconteceu?
+
+O uso de _::pseudo selectors_ aliado a _:sub selectors_ eleva e muito a possibilidade de estilização de estados de um componente.
+
+Com o uso de _::before_ e _::after_ podemos _'simular'_ um pseudo elemento antes ou depois do elemento na árvore DOM.
+No exemplo, estamos _'criando'_ um elemento antes da caixa de checkbox, porém estamos definindo um _position: absolute_ para que ele fique a frente da caixa de checkbox padrão.
+
+Definimos para esse elemento a mesma largura e altura da caixa de seleção, porém setamos um _background_ e uma _borda_ provavelmente diferente do padrão do Browser para as caixas de _checkbox_ (Sim, cada Browser renderiza uma caixa de checkbox de maneira diferente, vai lá, faz o teste).
+
+Ao selecionar o checkbox _(input[type='checkbox']:checked)_ definimos então a criação de outro _pseudo elemento_ `(::after { content: '' })` porém dessa vez usando de propriedades do CSS para criarmos nosso próprio _check_!
+
+<iframe src="https://codesandbox.io/embed/llmjylvymq" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+---
+
+Vlw e até a próxima!!

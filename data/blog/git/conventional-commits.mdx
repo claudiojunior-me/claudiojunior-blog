@@ -1,0 +1,82 @@
+---
+title: Conventional Commits
+date: '2020-06-23'
+tags: ['git','commit']
+draft: false
+summary: Um conjunto de convenções que visam padronizar uma mensagem de commit.
+images: []
+layout: PostLayout
+authors: ['default']
+---
+
+Segundo o Google, Convenção é:
+
+> acordo sobre determinada atividade, assunto etc., que obedece a entendimentos prévios e normas baseadas na experiência recíproca.
+
+<img src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=70" />
+
+Partindo dessa definição, Conventional Commits nada mais são que um conjunto de convenções para a criação de mensagens de commits. Seguir uma convenção de commit - ou padrão - pode se traduzir em deixar outras pessoas rapidamente familiarizadas com o que houve naquele momento e quais os problemas, features e até mesmo Breaking Changes ocorreram a partir daquela alteração adiante.
+
+As regras definidas nesta convenção auxiliam também na criação de ferramentas automatizadas, tais como geradores de `CHANGELOG`, automatizadores de Release e outros _toolings_.
+
+---
+
+## Anatomia de um Commit
+
+Uma mensagem de commit deve seguir um padrão definido de anatomia, sendo ele:
+
+```jsx
+<tipo>[escopo?]: <descrição>
+
+[corpo da mensagem?]
+
+[rodapé?]
+```
+
+onde cada um dos campos possuem funções específicas:
+
+### Tipo:
+
+- _feat_ (uma nova funcionalidade)
+- _fix_ (correção de bug)
+- _docs_ (alterações relacionadas a documentação do projeto)
+- _style_ (formatação de código, porém sem alteração)
+- _refactor_ (refatoração de funções ou métodos)
+- _test_ (alterações relacionadas a testes desde que não haja alteração de código da aplicação em si)
+- _chore_ (arquivos de configuração do projeto como `.gitignore`)
+
+### Escopo (Opcional):
+
+Se destina a trazer uma informação rápida quando o commit se destina à um escopo específico, tais quais:
+
+- _init_
+- _runner_
+- _watcher_
+- _config_
+- _web-server_
+- _proxy_
+- _lang_
+- _parser_
+- _middleware_
+
+### Descrição:
+
+Ela deve ser breve e descrever em poucas palavras o que está acontecendo naquele commit. Outro detalhe importante é descrever no presente imperativo, como _"change"_ e não _"changed"_ ou _"changes"_. Além de não ser necessário iniciar as sentenças com letras maiúsculas, assim como não é necessário colocar o ponto(.) no final da frase.
+
+### Corpo da Mensagem (Opcional):
+
+Ela se geralmente se torna necessário utilizar o corpo da mensagem quando precisamos detalhar mais sobre as alterações realizadas no commit, porém em grande parte das vezes, apenas a descrição se torna necessária.
+
+### Rodapé (Optional):
+
+O rodapé DEVE conter apenas informações adicionais ao commit, como link para o pull-request ou issue, ou até informar quando alguma modificação altera quebra alguma compatibilidade.
+
+---
+
+Isso é um breve resumo sobre o que seria a convenção de Commits, que teve toda sua especificação baseada em outra convenção, a Semantic Version ([https://semver.org/](https://semver.org/)).
+
+Para mais informações e detalhamento sobre a especificação, segue um dos links oficiais do projeto: [https://www.conventionalcommits.org/en/v1.0.0/](https://www.conventionalcommits.org/en/v1.0.0/).
+
+E para adicionar essas convenção no seu projeto Javascript, existe uma lib ja pronta para seguir todas essas regras: [https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
+
+Espero que seja util, e até mais ver!
