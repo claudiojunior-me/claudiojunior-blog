@@ -1,18 +1,18 @@
 /* eslint-disable react/display-name */
-import React from 'react'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import { ComponentMap } from 'mdx-bundler/client'
 import { coreContent } from '@/lib/utils/contentlayer'
+import type { Authors, Blog, Simple } from 'contentlayer/generated'
+import { ComponentMap } from 'mdx-bundler/client'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import React from 'react'
 import Image from './Image'
 import CustomLink from './Link'
-import TOCInline from './TOCInline'
-import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
-import type { Blog, Authors } from 'contentlayer/generated'
+import Pre from './Pre'
+import TOCInline from './TOCInline'
 
 interface MDXLayout {
   layout: string
-  content: Blog | Authors
+  content: Blog | Authors | Simple
   [key: string]: unknown
 }
 
