@@ -1,21 +1,21 @@
-import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
-import readingTime from 'reading-time'
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
 import path from 'path'
+import readingTime from 'reading-time'
 // Remark packages
-import remarkGfm from 'remark-gfm'
 import remarkFootnotes from 'remark-footnotes'
+import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
-import remarkExtractFrontmatter from './lib/remark-extract-frontmatter'
 import remarkCodeTitles from './lib/remark-code-title'
-import { extractTocHeadings } from './lib/remark-toc-headings'
+import remarkExtractFrontmatter from './lib/remark-extract-frontmatter'
 import remarkImgToJsx from './lib/remark-img-to-jsx'
+import { extractTocHeadings } from './lib/remark-toc-headings'
 // Rehype packages
-import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
-import rehypePrismPlus from 'rehype-prism-plus'
+import rehypeKatex from 'rehype-katex'
 import rehypePresetMinify from 'rehype-preset-minify'
+import rehypePrismPlus from 'rehype-prism-plus'
+import rehypeSlug from 'rehype-slug'
 
 const root = process.cwd()
 
@@ -66,9 +66,27 @@ export const Authors = defineDocumentType(() => ({
   computedFields,
 }))
 
+export const Simple = defineDocumentType(() => ({
+  name: 'Simple',
+  filePathPattern: 'simple/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    name: { type: 'string', required: true },
+    avatar: { type: 'string' },
+    occupation: { type: 'string' },
+    company: { type: 'string' },
+    email: { type: 'string' },
+    twitter: { type: 'string' },
+    linkedin: { type: 'string' },
+    github: { type: 'string' },
+    layout: { type: 'string' },
+  },
+  computedFields,
+}))
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors],
+  documentTypes: [Blog, Authors, Simple],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
