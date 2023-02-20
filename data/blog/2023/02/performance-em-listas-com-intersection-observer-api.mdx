@@ -1,0 +1,118 @@
+---
+title: Entregando mais performance em listas usando a Intersection Observer API
+date: '2023-02-21'
+draft: false
+canonicalUrl: '/posts/performance-em-listas-com-intersection-observer-api'
+authors: ['default']
+tags: ['react', 'javascript']
+summary: 'Você sabia que o Intersection Observer API pode ajudar a melhorar o desempenho do seu site? 🚀👀 Essa API do navegador permite detectar facilmente se um elemento HTML está visível no viewport ou não, sem afetar negativamente a experiência do usuário.'
+---
+
+Primeiramente, um breve resumo do problema que me fez encontrar e aplicar a Intersection Observer:
+
+---
+
+Pra quem não sabe, no momento, trabalho em um e-commerce B2B (empresa vendendo para empresa, basicamente), e, como todo e-commerce, temos uma área de visualização de pedidos já realizados.
+
+Essa área até possui uma paginação para carregar os dados junto a API, porém, em tela, as páginas são carregadas uma abaixo da outra, por exemplo:
+
+Página abre mostrando 10 pedidos, em cada card de pedido é exibido um resumo do mesmo - em qual etapa que se encontra (_nota fiscal_, _pagamento_, _em rota_, _etc_) além de possuir também uma breve visualização dos produtos contidos no pedido.
+
+Quando pedimos para carregar mais pedidos, mais 10 pedidos são concatenados nessa lista, e assim segue, essa lista crescendo conforme se clica para carregar os últimos pedidos - _**MAS**, antes de parecer totalmente loucura, existe também uma pesquisa por pedidos, então não precisa sair sempre carregando mais e mais até chegar em um pedido feito há 1 ano, kkkkk_.
+
+O problema era, a partir de certa quantidade de itens na carregados, o site começava a apresentar uma queda notável de performance, no scroll, um aumento de consumo de recursos do browser, todos os sintomas de um problema de renderização de listas grandes.
+
+Como utilizamos o React + Next JS como stack, procuramos algo dentro do próprio ecossistema React para resolver isso. Inclusive, encontrei uma lib que resolveria o problema, porém, pra implementar da maneira que nos seria satisfatório, ela exigiria instalar outra lib complementar, e eu sou um pouco relutante a inserir libs em demasiado nos projetos.
+
+Foi ai que encontrei algo já nativo nos browser em que precisamos suportar, não dependia de uma lib externa e aparentemente resolveria nosso problema, a Intersection Observer API.
+
+---
+
+## O que é a Intersection Observer API?
+
+A [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) é uma API do navegador que permite observar mudanças na interseção entre um elemento HTML e o viewport (a área visível na janela do navegador). Ele fornece uma maneira eficiente de monitorar se um elemento está visível no viewport ou não e, em seguida, executar uma ação com base nessa informação.
+
+> A área de intersecção do navegador, também conhecida como viewport, é a região visível da janela do navegador em um determinado momento, essa é a área da página em que o usuário pode ver e interagir diretamente. Essa área pode variar de acordo com a resolução do monitor e o tamanho da janela do navegador.> A área de intersecção do navegador, também conhecida como viewport, é a região visível da janela do navegador em um determinado momento, essa é a área da página em que o usuário pode ver e interagir diretamente. Essa área pode variar de acordo com a resolução do monitor e o tamanho da janela do navegador.
+
+## Quais as vantagens em usar a Intersection Observer API?
+
+- **Melhor desempenho**: O uso do Intersection Observer API pode melhorar o desempenho do seu site, pois ele pode reduzir a quantidade de trabalho que o navegador precisa fazer para detectar a visibilidade dos elementos na página. O navegador pode detectar automaticamente quando os elementos se tornam visíveis ou saem da tela, sem a necessidade de calcular manualmente as coordenadas dos elementos ou usar métodos mais intensivos em recursos, como o `scroll` ou `resize`.
+
+- **Compatibilidade**: O Intersection Observer API é suportado por todos os principais navegadores modernos, incluindo o Chrome, Firefox, Safari e Edge.
+
+- **Funcionalidade avançada**: Com ela é capaz, por exemplo, de executar alguma função, carregamento de dados, ou coisas do tipo apenas quando o elemento em questão entrar na área de intersecção do navegador.
+
+## Como implementar?
+
+Para começar a usar o Intersection Observer API, você precisa criar um novo objeto `IntersectionObserver` e passar uma função de retorno de chamada para ser executada sempre que a interseção entre o elemento observado e o viewport mudar. Essa função de retorno de chamada receberá um array de objetos `IntersectionObserverEntry` como seu único argumento, que contém informações sobre a interseção entre o elemento observado e o viewport.
+
+```javascript
+const options = {
+  root: null,
+  threshold: 0.5,
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      console.log('Element is visible in the viewport')
+    } else {
+      console.log('Element is NOT visible in the viewport')
+    }
+  })
+}, options)
+
+const elementToObserve = document.querySelector('#element-to-observe')
+observer.observe(elementToObserve)
+```
+
+Neste exemplo, estamos observando se o elemento `#element-to-observe` está visível no viewport, e, assim que estiver, ele irá printar a mensagem `'Element is visible in the viewport'`.
+
+Nele criamos um novo objeto `IntersectionObserver` e passamos uma função de retorno de chamada para ser executada sempre que a interseção entre o elemento observado e o viewport mudar. O método `observe` do objeto `IntersectionObserver` é o responsável por começar a observar as mudanças de interseção entre esses elementos.
+
+No callback verificamos se o elemento observado está visível no viewport ou não usando a propriedade `isIntersecting` do objeto `IntersectionObserverEntry`.
+
+```javascript
+function useIntersectionItem(containerSelector) {
+  const [loaded, setLoaded] = useState(false)
+  const elRef = useRef()
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setLoaded(true)
+            observer.disconnect()
+          } else {
+            setLoaded(false)
+          }
+        })
+      },
+      { root: document.querySelector(containerSelector) }
+    )
+
+    observer.observe(elRef.current)
+  }, [])
+
+  return { loaded, elRef }
+}
+
+function HeavyItemOfList() {
+  const { loaded, elRef } = useLoadHeavyItem('#list-container')
+
+  return <div ref={elRef}>{loaded ? <p>Not Loaded</p> : <p>Loaded</p>}</div>
+}
+```
+
+Já nesse exemplo, utilizando React, criamos um hook e utilizamos ele para observar a intersecção entre um item de uma lista e o viewport do componente utilizado como container dessa lista.
+
+Para este exemplo fazemos o uso do método `disconnect` do `IntersectionObserver` para que, assim tenha acontecido a intersecção uma vez, o `IntersectionObserver` para de ficar observando novas alterações para esse elemento.
+
+### Opções de configuração do Intersection Observer API
+
+O `IntersectionObserver` aceita algumas opções de configuração opcionais para ajustar seu comportamento:
+
+- `root´: define o elemento que é usado como viewport para o observador de interseção. O valor padrão é o `viewport` do navegador.
+- `rootMargin`: define uma margem em torno do viewport, o que pode ser útil para ajustar o comportamento do observador de interseção. _O valor padrão é `"0px 0px 0px 0px"`_.
+- `threshold`: define o limiar de interseção para o observador de interseção. _O valor padrão é 0_.

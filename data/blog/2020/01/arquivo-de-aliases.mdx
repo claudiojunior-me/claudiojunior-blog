@@ -9,17 +9,22 @@ layout: PostLayout
 authors: ['default']
 ---
 
-Uma das alegrias da vida é fazer mais com menos, e isso é uma das coisas que os *aliases* podem nos trazer.
+Uma das alegrias da vida é fazer mais com menos, e isso é uma das coisas que os _aliases_ podem nos trazer.
 
-Um *alias* nada mais é do que uma instrução em que o Shell substitui uma *string* por outra *string* -literalmente um "apelido".
+Um _alias_ nada mais é do que uma instrução em que o Shell substitui uma _string_ por outra _string_ -literalmente um "apelido".
 
-<img src="/static/images/aliases_print2.png" width="100%" height="450" style={{'object-fit': 'cover'}} />
+<img
+  src="/static/images/aliases_print2.png"
+  width="100%"
+  height="450"
+  style={{ 'object-fit': 'cover' }}
+/>
 
-Geralmente criamos um *alias* para digitarmos mais rápido algum comando que é muito utilizado no nosso dia a dia. Por exemplo, podemos digitar apenas um `ll` como abreviação do comando `ls -alh` para listarmos os arquivos e pastas do local atual incluindo conteúdo oculto (`a`) no formato de lista (`l`) e mostrando o tamanho dos itens já formatado (`h`).
+Geralmente criamos um _alias_ para digitarmos mais rápido algum comando que é muito utilizado no nosso dia a dia. Por exemplo, podemos digitar apenas um `ll` como abreviação do comando `ls -alh` para listarmos os arquivos e pastas do local atual incluindo conteúdo oculto (`a`) no formato de lista (`l`) e mostrando o tamanho dos itens já formatado (`h`).
 
 Ou até algo como saber seu `ip` usando um simples comando de 2 letras ao invés de digitar algo como `"echo Your ip is; dig +short [myip.opendns.com](http://myip.opendns.com/) @resolver1.opendns.com;"` - muito mais conveniente digitar apenas `ip`.....
 
-Existem duas simples formas de se criar um novo *alias*, podemos criar direto no Shell, criando 1 a 1 com o comando:
+Existem duas simples formas de se criar um novo _alias_, podemos criar direto no Shell, criando 1 a 1 com o comando:
 
 ```bash
     alias [name=value]

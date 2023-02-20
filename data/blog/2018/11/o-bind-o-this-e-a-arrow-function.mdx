@@ -1,7 +1,7 @@
 ---
 title: O bind, o this e a arrow function...
 date: '2018-11-20'
-tags: ['js','javascript']
+tags: ['js', 'javascript']
 draft: false
 summary: Não é só uma forma bonita de escrever o código, acredite.
 images: []
@@ -23,15 +23,15 @@ Por exemplo:
 
 ```javascript
 function showName() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
-let user1 = { name: 'João' };
-let user2 = { name: 'Paulo' };
+let user1 = { name: 'João' }
+let user2 = { name: 'Paulo' }
 
-showName(); // undefined
-showName.bind(user1).call(); // João
-showName.bind(user2).call(); // Paulo
+showName() // undefined
+showName.bind(user1).call() // João
+showName.bind(user2).call() // Paulo
 ```
 
 ## Arrow Functions
@@ -39,8 +39,8 @@ showName.bind(user2).call(); // Paulo
 As _arrow functions_ surgiram no ES2015, com elas é possível passar o contexto automaticamente sem o uso do _.bind()_.
 
 ```javascript
-let arr = [1, 2, 3, 4, 5];
-let arrDouble = arr.map((item) => item * 2);
+let arr = [1, 2, 3, 4, 5]
+let arrDouble = arr.map((item) => item * 2)
 
 // console.log(newDouble);
 // [2, 4, 6, 8, 10]
@@ -59,18 +59,18 @@ let person = {
   firstName: 'João',
   lastName: 'Silva',
 
-  fullName: function() {
-    return `${this.firstName} ${this.lastName}`;
+  fullName: function () {
+    return `${this.firstName} ${this.lastName}`
   },
 
-  show: function() {
-    window.setTimeout(function() {
-      console.log(this.fullName());
-    }, 100);
+  show: function () {
+    window.setTimeout(function () {
+      console.log(this.fullName())
+    }, 100)
   },
-};
+}
 
-person.show();
+person.show()
 ```
 
 Note que ao tentar executar esse código, irá surgir um erro de execução:
@@ -86,21 +86,21 @@ let person = {
   firstName: 'João',
   lastName: 'Silva',
 
-  fullName: function() {
-    return `${this.firstName} ${this.lastName}`;
+  fullName: function () {
+    return `${this.firstName} ${this.lastName}`
   },
 
-  show: function() {
+  show: function () {
     window.setTimeout(
-      function() {
-        console.log(this.fullName());
+      function () {
+        console.log(this.fullName())
       }.bind(this),
-      100,
-    );
+      100
+    )
   },
-};
+}
 
-person.show();
+person.show()
 ```
 
 - Ou podemos utilizar da propriedade das _arrow functions_ de repassar o contexto, assim o contexto de _show_ é
@@ -111,18 +111,18 @@ let person = {
   firstName: 'João',
   lastName: 'Silva',
 
-  fullName: function() {
-    return `${this.firstName} ${this.lastName}`;
+  fullName: function () {
+    return `${this.firstName} ${this.lastName}`
   },
 
-  show: function() {
+  show: function () {
     window.setTimeout(() => {
-      console.log(this.fullName());
-    }, 100);
+      console.log(this.fullName())
+    }, 100)
   },
-};
+}
 
-person.show();
+person.show()
 ```
 
 ![Photo by Anurag Harishchandrakar on Unsplash](/static/images/ok-understand.jpg)

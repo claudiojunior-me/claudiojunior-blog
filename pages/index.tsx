@@ -1,12 +1,12 @@
 import Link from '@/components/Link'
+import NewsletterForm from '@/components/NewsletterForm'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import formatDate from '@/lib/utils/formatDate'
-import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
-import { InferGetStaticPropsType } from 'next'
-import NewsletterForm from '@/components/NewsletterForm'
 import { allBlogs } from 'contentlayer/generated'
+import { InferGetStaticPropsType } from 'next'
 
 const MAX_DISPLAY = 5
 
@@ -72,7 +72,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read "${title}"`}
                         >
-                          Read more &rarr;
+                          Leia mais &rarr;
                         </Link>
                       </div>
                     </div>
@@ -88,9 +88,9 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           <Link
             href="/blog"
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="all posts"
+            aria-label="todos os posts"
           >
-            All Posts &rarr;
+            Todos os Posts &rarr;
           </Link>
         </div>
       )}

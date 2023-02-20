@@ -1,9 +1,9 @@
+import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
-import { PageSEO } from '@/components/SEO'
-import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
-import { InferGetStaticPropsType } from 'next'
+import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
+import { InferGetStaticPropsType } from 'next'
 
 export const POSTS_PER_PAGE = 5
 
@@ -36,7 +36,7 @@ export default function Blog({
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
-        title="All Posts"
+        title="Todos os Posts"
       />
     </>
   )
