@@ -5,8 +5,8 @@ const siteMetadata = {
   description: '',
   language: 'pt-br',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://claudiojunior.me/',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://claudiojunior.me',
+  siteRepo: 'https://github.com/claudiojunior-me/claudiojunior-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
