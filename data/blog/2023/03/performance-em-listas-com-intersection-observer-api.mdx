@@ -1,0 +1,76 @@
+---
+title: Por que o useEffect não está ativando? Como funcionam as comparações no useEffect
+date: '2023-03-04'
+draft: false
+canonicalUrl: '/posts/como-funcionam-comparacoes-useEffect'
+authors: ['default']
+tags: ['react', 'javascript']
+summary: 'A comparação de dependências no useEffect é crucial para garantir que o efeito seja executado apenas quando for necessário, evitando assim, comportamentos indesejados e melhorando a performance. Mas e quando temos um objeto complexo e essa comparação não retorna a resposta desejada?'
+---
+
+Os hooks do React são de fato uma mão na roda, porém, vez ou outra, acabamos passando por alguns perrenges em que olhamos, olhamos e olhamos pro código
+e não descobrimos nem sobre o que procurar, porque, de fato, não parece ter nada errado com a implementação, mas ainda sim nada de funcionar
+da maneira que esperávamos. É nesses momentos que acabamos nos aprofundando mais nas implementação das libs que usamos no nosso dia a dia, e
+isso nos trás diversas descobertas.
+
+---
+
+O `useEffect` é um dos hooks mais utilizados no React, e nos permite que adicionemos efeitos colaterais a componentes funcionais.
+Uma das funcionalidades mais importantes do `useEffect` é a possibilidade de definir dependências, que são valores que, quando alterados,
+devem fazer com que o efeito seja executado novamente.
+
+A comparação de dependências no `useEffect` é crucial para garantir que o efeito seja executado apenas quando for necessário, evitando
+assim, comportamentos indesejados e melhorando a performance. Quando as dependências são definidas, o React compara os valores antigos e
+os novos para decidir se o efeito deve ser executado novamente.
+
+Porém algoritmo de comparação padrão do React é chamado de **"comparação rasa"** ou **"shallow comparison"**. Na comparação rasa, o React
+compara apenas as referências de objetos e verifica se elas são idênticas. Isso significa que, mesmo que o conteúdo do objeto seja alterado,
+se a referência permanecer a mesma, o React considerará que o valor não mudou e não executará o efeito.
+
+Isso pode levar a comportamentos indesejados quando trabalhamos com objetos complexos, como arrays ou objetos aninhados.
+Se alterarmos o conteúdo do objeto sem modificar sua referência, o efeito não será executado novamente.
+Para resolver esse problema, podemos usar uma **"comparação profunda"** ou **"deep comparison"**.
+
+Na comparação profunda, o React verifica se o conteúdo do objeto é igual, independentemente de sua referência. Isso
+permite que o efeito seja executado novamente sempre que o valor é modificado, independentemente de como ele foi modificado.
+
+Para usar uma comparação profunda no `useEffect`, podemos usar bibliotecas como o `lodash` ou o `fast-deep-equal` para criarmos nossa própria implementação
+do `useEffect`:
+
+```javascript
+import { useRef, useEffect } from 'react'
+import isEqual from 'lodash/isEqual'
+
+function useDeepCompareMemoize(value) {
+  const ref = useRef()
+
+  if (!isEqual(value, ref.current)) {
+    ref.current = value
+  }
+
+  return ref.current
+}
+
+function useDeepCompareEffect(callback, dependencies) {
+  useEffect(
+    callback,
+    dependencies.map(useDeepCompareMemoize)
+  )
+}
+
+export useDeepCompareEffect
+
+// para utilizar, basta usar como se fosse o próprio useEffect:
+// useDeepCompareEffect(() => {}, [deepDependence1, deepDependence2.items])
+```
+
+Em geral, é recomendado usar uma comparação profunda quando trabalhamos com objetos complexos, como arrays ou objetos aninhados.
+No entanto, é importante lembrar que a comparação profunda pode ser mais intensiva em termos de performance do que a comparação rasa,
+especialmente quando trabalhamos com objetos grandes ou profundamente aninhados. Portanto, é importante avaliar a necessidade
+de uma comparação profunda em cada caso e considerar o impacto na performance do aplicativo.
+
+---
+
+Em um próximo post pretendo abordar mais a fundo até onde vai a comparação rasa e como funcionam as comparações no javascript.
+
+😎
