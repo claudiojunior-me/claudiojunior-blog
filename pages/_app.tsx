@@ -8,6 +8,7 @@ import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import siteMetadata from '@/data/siteMetadata'
 import AnalyticsComponent from '@/components/analytics'
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <Analytics />
+      <SpeedInsights />
       <AnalyticsComponent />
       <LayoutWrapper>
         <Component {...pageProps} />
