@@ -7,9 +7,11 @@ import '@fontsource/inter/variable-full.css'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import siteMetadata from '@/data/siteMetadata'
-import Analytics from '@/components/analytics'
+import AnalyticsComponent from '@/components/analytics'
 import LayoutWrapper from '@/components/LayoutWrapper'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -19,9 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <Analytics />
+      <AnalyticsComponent />
       <LayoutWrapper>
         <Component {...pageProps} />
       </LayoutWrapper>
+      <SpeedInsights />
     </ThemeProvider>
   )
 }
